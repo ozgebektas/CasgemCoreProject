@@ -66,6 +66,7 @@ namespace Pizzapan.PresentationLayer
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();//Login iþemi için
 
             app.UseAuthorization();
 
