@@ -9,5 +9,6 @@ namespace Pizzapan.BusinessLayer.Abstarct
 {
     public interface ICategoryService:IGenericService<Category>
     {
+        public List<Category> TGetCategoriesWithProduct();
     }
 }

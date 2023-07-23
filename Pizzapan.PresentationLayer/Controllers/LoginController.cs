@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Pizzapan.EntityLayer.Concrete;
 using Pizzapan.PresentationLayer.Models;
@@ -29,5 +30,13 @@ namespace Pizzapan.PresentationLayer.Controllers
             }
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index","Login");
+        }
+      
     }
 }

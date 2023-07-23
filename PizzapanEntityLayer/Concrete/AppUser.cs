@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Pizzapan.EntityLayer.Concrete
 {
-    public class AppUser:IdentityUser<int>
+    public class AppUser:IdentityUser<int>//appuser'in id yapılanması int olacağı için generic içerisinde belirtilir.
     {
         public string Name { get; set; }
         public string Surname { get; set; }

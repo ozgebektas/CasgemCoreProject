@@ -30,7 +30,7 @@ namespace Pizzapan.BusinessLayer.Concrete
 
         public List<Discount> TGetList()
         {
-            throw new NotImplementedException();
+           return _discountDal.GetList();
         }
 
         public void TInsert(Discount t)

@@ -1,4 +1,6 @@
-﻿using Pizzapan.DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using Pizzapan.DataAccessLayer.Abstract;
+using Pizzapan.DataAccessLayer.Concrete;
 using Pizzapan.DataAccessLayer.Repositories;
 using Pizzapan.EntityLayer.Concrete;
 using System;
@@ -9,7 +11,12 @@ using System.Threading.Tasks;
 
 namespace Pizzapan.DataAccessLayer.EntityFramework
 {
-    public class EfCategoryDal:GenericRepository<Category>,ICategoryDal
+    public class EfCategoryDal : GenericRepository<Category>, ICategoryDal
     {
+        public List<Category> GetCategoriesWithProduct()
+        {
+            using var context = new Context();
+            return context.Categories.Include(x => x.Products).ToList();
+        }
     }
 }

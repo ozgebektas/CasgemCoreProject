@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -44,9 +45,20 @@ namespace Pizzapan.PresentationLayer
             services.AddScoped<IDiscountService,DiscountManager>();
             services.AddScoped<IDiscountDal, EfDiscountDal>();
 
-        
+            services.AddScoped<IProductImageService, ProductImageManager>();
+            services.AddScoped<IProductImageDal, EfProductImageDal>();
+
+
+            services.AddScoped<ITestimonialService,TestimonialManager>();
+            services.AddScoped<ITestimonialDal, EfTestimonialDal>();
+
+            services.AddScoped<IOurTeamService, OurTeamManager>();
+            services.AddScoped<IOurTeamDal, EfOurTeamDal>();
+
+
             services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>();
             services.AddControllersWithViews();
+                //.AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<Startup>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

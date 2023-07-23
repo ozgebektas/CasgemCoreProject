@@ -18,6 +18,12 @@ namespace Pizzapan.PresentationLayer.Controllers
             var values = _contactService.TGetList();
             return View(values);
         }
+        public IActionResult ContactList()
+        {
+            var values = _contactService.TGetList();
+            return View(values);
+        }
+
         [HttpGet]
         public IActionResult AddContact() 
         { 

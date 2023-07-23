@@ -55,7 +55,7 @@ namespace Pizzapan.PresentationLayer.Controllers
                     mimeMessage.To.Add(mailboxAddressTo);
 
                     var bodyBuilder = new BodyBuilder();
-                    bodyBuilder.TextBody = "Giriiş Yapabilmek için onaylama kodunuz:" + x;
+                    bodyBuilder.TextBody = "Giriş Yapabilmek için onaylama kodunuz:" + x;
 
                     mimeMessage.Body = bodyBuilder.ToMessageBody();
 
@@ -67,7 +67,8 @@ namespace Pizzapan.PresentationLayer.Controllers
                     smtpClient.Disconnect(true);
 
                     #endregion
-                    return RedirectToAction("Index", "Login");
+                    TempData["UserName"] = appUser.UserName;
+                    return RedirectToAction("Index", "Confirm");
                 }
                 else
                 {
